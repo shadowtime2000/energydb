@@ -10,13 +10,14 @@ import EnergyDB from "https://denopkg.com/shadowtime2000/energydb/mod.ts";
 
 const db = new EnergyDB();
 
-db.set("foo", "bar");
-db.get("foo"); // "bar"
-db.delete("foo");
+await db.set("foo", "bar");
+await db.get("foo"); // "bar"
+await db.delete("foo");
 ```
-You can also supply your own store object
+
+#### Custom Stores
 ```typescript
-const storeFactory = () => new Map<string, any>();
+const storeFactory = () => new Map<string, any>(); // Replace with your own store
 
 const db = new EnergyDB(storeFactory);
 ```
