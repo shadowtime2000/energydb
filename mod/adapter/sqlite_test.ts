@@ -20,3 +20,5 @@ Rhum.testPlan("#SQLiteAdapter", () => {
     });
   });
 });
+
+Rhum.run();
