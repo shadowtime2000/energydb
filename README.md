@@ -22,3 +22,11 @@ const storeFactory = () => new Map<string, any>(); // Replace with your own stor
 
 const db = new EnergyDB(storeFactory);
 ```
+
+#### Adapters
+By default the database is stored in memory but `EnergyDB` still supports database adapters. They must fit the interface under `mod/adapter.ts` and you can register them as so:
+```typescript
+const db = new EnergyDB();
+
+db.registerAdapter(new MyAdapter());
+```
