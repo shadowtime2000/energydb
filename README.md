@@ -30,3 +30,7 @@ const db = new EnergyDB();
 
 db.registerAdapter(new MyAdapter());
 ```
+
+##### Supported Adapters
+
+- A `sqlite` adapter located under `mod/adapter/sqlite.ts`
