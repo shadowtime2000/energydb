@@ -30,8 +30,11 @@ export default class EnergyDB extends EventEmitter<Events> {
   }
   public async registerAdapter(adapter: Adapter): Promise<number> {
     const index = this.adapters.push(adapter) - 1;
-    this.on("set", this.adapters[index].set);
-    this.on("delete", this.adapters[index].delete);
+    this.on(
+      "set",
+      (key: string, value: any) => this.adapters[index].set(key, value),
+    );
+    this.on("delete", (key: string) => this.adapters[index].delete(key));
     return Promise.resolve(index);
   }
   public async loadDataFromAdapter(id: number): Promise<void> {
