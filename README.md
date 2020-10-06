@@ -16,6 +16,7 @@ await db.delete("foo");
 ```
 
 #### Custom Stores
+Stores must fit the interface under `mod/store.ts` and store factories must fit the interface under `mod/storeFactory.ts`.
 ```typescript
 const storeFactory = () => new Map<string, any>(); // Replace with your own store
 
