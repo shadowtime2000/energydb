@@ -23,6 +23,14 @@ Rhum.testPlan("#SQLiteAdapter", () => {
       Rhum.asserts.assertEquals(await energyDB.get("foo"), "foobar");
     });
   });
+  Rhum.testSuite(".on('delete')", () => {
+    Rhum.testCase("should not throw errors", async () => {
+      await energyDB.delete("foo");
+    });
+    Rhum.testCase("should have deleted", async () => {
+      Rhum.asserts.assertEquals(await energyDB.get("foo"), undefined);
+    });
+  });
 });
 
 Rhum.run();

@@ -26,6 +26,9 @@ export default class SQLiteAdapter implements Adapter {
   }
 
   public async delete(key: string): Promise<void> {
-    return;
+    this.database.query(
+      "DELETE FROM energydb WHERE key = ?",
+      [key],
+    );
   }
 }
