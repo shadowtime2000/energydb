@@ -1,6 +1,6 @@
 import { DB } from "https://deno.land/x/sqlite/src/db.ts";
 
-import Adapter from "../adapter.ts";
+import type Adapter from "../adapter.ts";
 
 export default class SQLiteAdapter implements Adapter {
   private path: string | undefined;
@@ -16,8 +16,12 @@ export default class SQLiteAdapter implements Adapter {
 
   public async set(key: string, value: any): Promise<void> {
     this.database.query(
-      "insert into energydb (key)\n Select ? Where Not Exists(select * from energydb where key = ?)",
-      [key, key],
+      "INSERT OR IGNORE INTO energydb (key, value) VALUES (?, ?)",
+      [key, value],
+    );
+    this.database.query(
+      "UPDATE energydb SET value = ? WHERE key = ?",
+      [value, key],
     );
   }
 

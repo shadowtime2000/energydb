@@ -18,6 +18,10 @@ Rhum.testPlan("#SQLiteAdapter", () => {
     Rhum.testCase("set value should exist", async () => {
       Rhum.asserts.assertEquals(await energyDB.get("foo"), "bar");
     });
+    Rhum.testCase("should update value", async () => {
+      await energyDB.set("foo", "foobar");
+      Rhum.asserts.assertEquals(await energyDB.get("foo"), "foobar");
+    });
   });
 });
 

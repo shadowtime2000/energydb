@@ -1,9 +1,9 @@
 import EventEmitter from "https://deno.land/x/event@0.1.0/mod.ts";
 import Adapter from "./mod/adapter.ts";
 
-import Events from "./mod/events.ts";
-import Store from "./mod/store.ts";
-import StoreFactory from "./mod/storeFactory.ts";
+import type Events from "./mod/events.ts";
+import type Store from "./mod/store.ts";
+import type StoreFactory from "./mod/storeFactory.ts";
 
 export default class EnergyDB extends EventEmitter<Events> {
   private store: Store;
